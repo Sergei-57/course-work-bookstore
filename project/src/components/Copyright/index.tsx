@@ -1,3 +1,5 @@
+import '../../styles/_copyright.scss'
+
 export function Copyright() {
   return (
     <div className="copyright d-flex justify-content-between">

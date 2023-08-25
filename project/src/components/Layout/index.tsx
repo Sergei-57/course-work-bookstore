@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import '../../styles/Layout.scss'
+import '../../styles/_layout.scss'
 
 interface LayoutProps {
   children: ReactNode

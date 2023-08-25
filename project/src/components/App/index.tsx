@@ -6,6 +6,7 @@ import '../../styles/App.scss'
 import { Layout } from '../Layout'
 import { Header } from '../Header'
 import { Footer } from '../Footer'
+import { Subscribe } from '../Subscribe'
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
       <Layout>
         <Header />
         <Footer />
+        <Subscribe />
       </Layout>
     </div>
   )
