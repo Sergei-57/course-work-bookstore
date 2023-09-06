@@ -105,3 +105,9 @@ export interface CounterProps {
   price: number
   onTotalSumChange: (newTotalSum: number) => void
 }
+
+export interface PaginationProps {
+  books: BookProps[]
+  limit: number
+  pageNumber: number
+}

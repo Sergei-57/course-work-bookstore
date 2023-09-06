@@ -5,6 +5,7 @@ import { Title } from '../../components/Title'
 import { BackHomeLink } from '../../components/BackHomeLink'
 import { FavoriteBook } from '../../components/FavoriteBook'
 import { setFavorites } from '../../redux/favoriteSlice'
+
 export function MyFavorites(): JSX.Element {
   const dispatch = useAppDispatch()
   const { favoritesBooks } = useAppSelector(state => state.favorite)

@@ -20,7 +20,7 @@ export function Cart(): JSX.Element {
       <BackHomeLink />
       <Title>Your cart</Title>
       {renderBasketBooks()}
-      <BasketCheck data={cart} />
+      <BasketCheck />
     </div>
   )
 }

@@ -5,9 +5,9 @@ import { Button } from '../Button'
 export function BasketCheck(): JSX.Element {
   const cart = useAppSelector(state => state.cart.cart)
   const vat: number = 12.50
-  const totalCartPrice = calculateTotalPrice(cart)
+  const totalCartPrice = calcTotalPrice(cart)
 
-  function calculateTotalPrice(dataCart: BooksData[] | undefined): number {
+  function calcTotalPrice(dataCart: BooksData[] | undefined): number {
     if (dataCart) {
       const sum: number = dataCart.reduce((acc: number, book: BooksData) => {
         const priceWithoutDollar: string = book.price.replace("$", "")
@@ -20,14 +20,14 @@ export function BasketCheck(): JSX.Element {
     return 0
   }
 
-  function calculateFinalPrice(): number {
-    const booksSum = calculateTotalPrice(cart)
+  function calcFinalPrice(): number {
+    const booksSum = calcTotalPrice(cart)
     const sumTotal = booksSum + vat
     return parseFloat(sumTotal.toFixed(2))
   }
 
   function handleCheckoutClick() {
-    alert(`Your total price is: ${calculateFinalPrice()}`)
+    alert(`Your total price is: ${calcFinalPrice()}`)
   }
   return (
     <div className="cart-total">
@@ -38,7 +38,7 @@ export function BasketCheck(): JSX.Element {
         <span>VAT</span><span>$ {vat}</span>
       </div>
       <div className="cart-total__total-price">
-        <span>total:</span><span>$ {calculateFinalPrice()}</span>
+        <span>total:</span><span>$ {calcFinalPrice()}</span>
       </div>
       <div className="cart-total__btn"><Button type="submit" onClick={handleCheckoutClick}>Check out</Button></div>
     </div>

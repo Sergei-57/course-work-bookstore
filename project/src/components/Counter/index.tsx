@@ -7,30 +7,32 @@ type CounterProps = {
 
 export function Counter({ initialValue = 1, onChange }: CounterProps): JSX.Element {
   const [count, setCount] = useState(() => {
-    const storedCount = localStorage.getItem('count')
-    if (storedCount) {
-      return Number(storedCount)
+    const countFromLocalStorage = localStorage.getItem('count')
+    if (countFromLocalStorage) {
+      return Number(countFromLocalStorage)
     }
     return initialValue
   })
 
-  const decrement = () => {
+  const decrementCount = () => {
     if (count > 1) {
-      setCount(count - 1)
-      onChange(count - 1)
+      const newCount = count - 1
+      setCount(newCount)
+      onChange(newCount)
     }
   }
 
-  const increment = () => {
-    setCount(count + 1)
-    onChange(count + 1)
+  const incrementCount = () => {
+    const newCount = count + 1
+    setCount(newCount)
+    onChange(newCount)
   }
 
   return (
-    <div className="mt-5">
-      <button className="btn btn-danger" onClick={decrement}>-</button>
-      <span className="mx-4">{count}</span>
-      <button className="btn btn-success" onClick={increment}>+</button>
+    <div className="counter mt-5">
+      <button className="counter__button" onClick={decrementCount}>-</button>
+      <span className="counter__number">{count}</span>
+      <button className="counter__button" onClick={incrementCount}>+</button>
     </div>
   )
 }

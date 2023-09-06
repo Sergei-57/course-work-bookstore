@@ -33,7 +33,6 @@ export function PreviewBook({ data }: { data: BooksData }): JSX.Element {
     localStorage.setItem('isFavorite', JSON.stringify(isFavorite))
   }, [isFavorite])
 
-
   return (
     <div className="preview-book">
       <Title>{data.title}</Title>

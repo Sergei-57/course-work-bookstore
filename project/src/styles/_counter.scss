@@ -1,0 +1,16 @@
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  &__button {
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    border: none;
+    background-color: white;
+  }
+
+  &__number {
+    font-size: 2rem;
+  }
+}
