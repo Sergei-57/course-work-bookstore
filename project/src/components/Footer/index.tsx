@@ -1,10 +1,10 @@
 import { Copyright } from '../Copyright'
 
-export function Footer() {
+export function Footer(): JSX.Element {
   return (
-    <div>
+    <footer className="footer">
       <Copyright />
-    </div>
+    </footer>
   )
 }
 

@@ -1,0 +1,19 @@
+.header {
+  border-bottom: 1px solid #E7E7E7;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+  }
+
+  &__links {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}

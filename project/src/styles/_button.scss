@@ -1,0 +1,26 @@
+.button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+
+  &_lg {
+    padding: 1.3rem 1rem;
+    background-color: #313037;
+    color: #fff;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &:hover {
+    background-color: rgb(38, 37, 37);
+  }
+
+  &:active {
+    background-color: rgb(114, 73, 73);
+  }
+}

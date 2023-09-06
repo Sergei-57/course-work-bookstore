@@ -1,0 +1,44 @@
+.favorite-book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    margin-bottom: 1.2rem;
+  }
+
+  &__authors {
+    margin-bottom: 2.2rem;
+  }
+
+  &__author {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #999;
+    text-align: center;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  &__icon {
+    cursor: pointer;
+    padding: 1rem;
+    background-color: #313037;
+  }
+
+  &__icon.active {
+    background-color: #e488e3;
+  }
+}

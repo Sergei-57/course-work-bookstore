@@ -1,10 +1,8 @@
-import '../../styles/_copyright.scss'
-
-export function Copyright() {
+export function Copyright(): JSX.Element {
   return (
-    <div className="copyright d-flex justify-content-between">
-      <p>©2022 Bookstore</p>
-      <p>All rights reserved</p>
+    <div className="copyright">
+      <span className="copyright__text">© 2022 BookShop</span>
+      <span className="copyright__text">All rights reserved</span>
     </div>
   )
 }

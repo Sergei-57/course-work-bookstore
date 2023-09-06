@@ -1,12 +1,20 @@
-import { ReactNode } from 'react'
-import '../../styles/_layout.scss'
+import { ReactElement } from 'react'
+import { Outlet } from 'react-router-dom'
+import { Header } from '../Header'
+import { Main } from '../Main'
+import { Footer } from '../Footer'
+import { Container } from '../Container'
 
-interface LayoutProps {
-  children: ReactNode
-}
-
-export function Layout(props: LayoutProps): JSX.Element {
+export function Layout(): ReactElement {
   return (
-    <div className="container">{props.children}</div>
+    <div className="layout">
+      <Container>
+        <Header />
+        <Main>
+          <Outlet />
+        </Main>
+        <Footer />
+      </Container>
+    </div>
   )
 }
