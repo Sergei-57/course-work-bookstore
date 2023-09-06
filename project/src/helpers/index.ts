@@ -3,9 +3,9 @@ import { Dispatch } from 'redux'
 import { RootState } from '../redux/store'
 import { AnyAction } from 'redux'
 import { BooksData } from '../types/interface'
-import { Book } from '../types/type'
+import { Book } from '../types/interface'
 import { setFavorites, setFavoritesCount } from '../redux/favoriteSlice'
-import { setCartItems } from '../redux/cartSlice'
+import { setCart } from '../redux/cartSlice'
 import { setPage } from '../redux/newBooksSlice'
 
 export function toggleFavorite(
@@ -38,16 +38,16 @@ export function toggleFavorite(
 
 export function handleAddToCart(
   data: BooksData,
-  cartItems: BooksData[],
+  cart: BooksData[],
   dispatch: ThunkDispatch<RootState, undefined, AnyAction>
 ) {
-  const isBookAlreadyAdded = cartItems.some(item => item.isbn13 === data.isbn13)
+  const isBookAlreadyAdded = cart.some(item => item.isbn13 === data.isbn13)
 
   if (!isBookAlreadyAdded) {
-    const updatedCartItems = [...cartItems, data]
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
-    localStorage.setItem('cartItemCount', String(updatedCartItems.length))
-    dispatch(setCartItems(updatedCartItems))
+    const updatedCart = [...cart, data]
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+    localStorage.setItem('cartCount', String(updatedCart.length))
+    dispatch(setCart(updatedCart))
   } else {
     alert('Book already added to cart')
   }

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import { BookProps } from '../../types/type'
+import { BookProps } from '../../types/interface'
+
 interface PaginationProps {
   books: BookProps[]
   limit: number

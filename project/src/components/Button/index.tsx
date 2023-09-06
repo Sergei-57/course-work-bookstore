@@ -1,4 +1,4 @@
-import { ButtonProps } from '../../types/type'
+import { ButtonProps } from '../../types/interface'
 
 export function Button({ children, type, onClick }: ButtonProps): JSX.Element {
   return (

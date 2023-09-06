@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { Rating } from '../Rating'
 import { Price } from '../Price'
-import { BookProps } from '../../types/type'
+import { BookProps } from '../../types/interface'
 
 export function Book({ data }: BookProps): JSX.Element {
   return (

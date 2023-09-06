@@ -1,20 +1,19 @@
 import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hook'
 import { useParams } from 'react-router-dom'
-
+import { useAppDispatch, useAppSelector } from '../../hook'
 import { fetchBook } from '../../redux/bookSlice'
-
 import { BackHomeLink } from '../../components/BackHomeLink'
 import { Loading } from '../../components/Loading'
 import { PreviewBook } from '../../components/PreviewBook'
 import { Book } from '../../components/Book'
 import { Subscribe } from '../../components/Subscribe'
 import { Title } from '../../components/Title'
+
 export function SingleBook(): JSX.Element {
   const dispatch = useAppDispatch()
   const isbn13 = useParams()
   const id: string = isbn13.isbn13 !== undefined ? isbn13.isbn13 : ''
-  const { bookDetails, loadingDetails, errorDetails } = useAppSelector(state => state.bookDetails)
+  const { book, loading, error } = useAppSelector(state => state.book)
   const { newBooks } = useAppSelector(state => state.newBooks)
 
   useEffect(() => {
@@ -22,10 +21,12 @@ export function SingleBook(): JSX.Element {
       dispatch(fetchBook(id))
     }
   }, [dispatch, id])
-  if (loadingDetails) {
+
+  if (loading) {
     return <Loading />
   }
-  if (errorDetails) {
+
+  if (error) {
     return <div>Error</div>
   }
 
@@ -40,7 +41,7 @@ export function SingleBook(): JSX.Element {
   return (
     <div className="book">
       <BackHomeLink />
-      <PreviewBook data={bookDetails} />
+      <PreviewBook data={book} />
       <Subscribe />
       <Title>Similar Books</Title>
       <div className="book__similated">

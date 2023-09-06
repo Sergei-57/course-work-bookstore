@@ -11,16 +11,11 @@
     background-color: #313037;
     color: #fff;
     width: 100%;
-    transition: all 0.2s ease-in-out;
     text-transform: uppercase;
     font-weight: 700;
   }
 
-  &:hover {
-    background-color: rgb(38, 37, 37);
-  }
-
   &:active {
-    background-color: rgb(114, 73, 73);
+    background-color: rgb(144, 35, 35);
   }
 }

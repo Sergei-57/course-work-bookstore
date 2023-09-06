@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { BooksData } from '../types/interface'
-import { FavoriteState } from '../types/interface'
+import { BooksData, FavoriteState } from '../types/interface'
 
 const favoriteSlice = createSlice({
   name: "favorites",

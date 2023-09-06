@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../hook'
-import { removeFromCart } from '../../redux/cartSlice'
-import { setCartItems } from '../../redux/cartSlice'
+import { removeFromCart, setCart } from '../../redux/cartSlice'
 import { BooksData } from '../../types/interface'
 import { Price } from '../Price'
 import { Counter } from '../Counter'
@@ -8,26 +7,26 @@ import closed from '../../images/closed.svg'
 
 export function CartBook({ data }: { data: BooksData }): JSX.Element {
   const dispatch = useAppDispatch()
-  const cartItems = useAppSelector(state => state.cart.cartItems)
+  const cart = useAppSelector(state => state.cart.cart)
 
   function handleRemoveFromCart(item: BooksData) {
     dispatch(removeFromCart(item))
-    const updatedCartItems = cartItems.filter(cartItem => cartItem.isbn13 !== item.isbn13)
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
-    localStorage.setItem('cartItemCount', String(updatedCartItems.length))
-    dispatch(setCartItems(updatedCartItems))
+    const updatedCart = cart.filter(cartItem => cartItem.isbn13 !== item.isbn13)
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+    localStorage.setItem('cartCount', String(updatedCart.length))
+    dispatch(setCart(updatedCart))
   }
 
   const handleCounterChange = (value: number) => {
-    const updatedCartItems = cartItems.map(cartItem => {
+    const updatedCart = cart.map(cartItem => {
       if (cartItem.isbn13 === data.isbn13) {
-        const updatedCartItem = { ...cartItem, quantity: value }
-        return updatedCartItem
+        const updatedCart = { ...cartItem, quantity: value }
+        return updatedCart
       }
       return cartItem
     })
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
-    dispatch(setCartItems(updatedCartItems))
+    localStorage.setItem('cart', JSON.stringify(updatedCart))
+    dispatch(setCart(updatedCart))
   }
 
   return (

@@ -3,9 +3,9 @@ import { BooksData } from '../../types/interface'
 import { Button } from '../Button'
 
 export function BasketCheck(): JSX.Element {
-  const cartItems = useAppSelector(state => state.cart.cartItems)
+  const cart = useAppSelector(state => state.cart.cart)
   const vat: number = 12.50
-  const totalCartPrice = calculateTotalPrice(cartItems)
+  const totalCartPrice = calculateTotalPrice(cart)
 
   function calculateTotalPrice(dataCart: BooksData[] | undefined): number {
     if (dataCart) {
@@ -20,14 +20,14 @@ export function BasketCheck(): JSX.Element {
     return 0
   }
 
-  function finalPrice(): number {
-    const booksSum = calculateTotalPrice(cartItems)
+  function calculateFinalPrice(): number {
+    const booksSum = calculateTotalPrice(cart)
     const sumTotal = booksSum + vat
     return parseFloat(sumTotal.toFixed(2))
   }
 
-  function handleClick() {
-    console.log(totalCartPrice, vat, finalPrice())
+  function handleCheckoutClick() {
+    alert(`Your total price is: ${calculateFinalPrice()}`)
   }
   return (
     <div className="cart-total">
@@ -38,9 +38,9 @@ export function BasketCheck(): JSX.Element {
         <span>VAT</span><span>$ {vat}</span>
       </div>
       <div className="cart-total__total-price">
-        <span>total:</span><span>$ {finalPrice()}</span>
+        <span>total:</span><span>$ {calculateFinalPrice()}</span>
       </div>
-      <div className="cart-total__btn"><Button type="submit" onClick={handleClick}>Check out</Button></div>
+      <div className="cart-total__btn"><Button type="submit" onClick={handleCheckoutClick}>Check out</Button></div>
     </div>
   )
 }

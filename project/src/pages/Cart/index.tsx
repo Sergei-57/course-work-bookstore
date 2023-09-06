@@ -5,11 +5,11 @@ import { CartBook } from '../../components/CartBook'
 import { BasketCheck } from '../../components/BasketCheck'
 
 export function Cart(): JSX.Element {
-  const cartItems = useAppSelector(state => state.cart.cartItems)
+  const cart = useAppSelector(state => state.cart.cart)
 
   function renderBasketBooks() {
-    if (cartItems.length > 0) {
-      return cartItems.map((book) => <CartBook key={book.isbn13} data={book} />)
+    if (cart.length > 0) {
+      return cart.map((book) => <CartBook key={book.isbn13} data={book} />)
     } else {
       return <h2>Your basket is empty</h2>
     }
@@ -20,7 +20,7 @@ export function Cart(): JSX.Element {
       <BackHomeLink />
       <Title>Your cart</Title>
       {renderBasketBooks()}
-      <BasketCheck data={cartItems} />
+      <BasketCheck data={cart} />
     </div>
   )
 }

@@ -8,25 +8,28 @@ import { Price } from '../Price'
 import favorites from '../../images/favorites.svg'
 
 export function FavoriteBook({ data }: { data: BooksData }): JSX.Element {
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [isBookFavorite, setIsBookFavorite] = useState(false)
   const dispatch = useAppDispatch()
   const favoritesCount = useAppSelector(state => state.favorite.favoritesCount)
 
-  function handleAddFavorite() {
-    const newIsFavorite = !isFavorite
+  function handleToggleFavorite() {
+    const newIsFavorite = !isBookFavorite
     toggleFavorite(data, newIsFavorite, favoritesCount, dispatch)
-    setIsFavorite(newIsFavorite)
+    setIsBookFavorite(newIsFavorite)
     localStorage.setItem(`isFavorite_${data.isbn13}`, JSON.stringify(newIsFavorite))
   }
+
   useEffect(() => {
-    const storedIsFavorite = localStorage.getItem('isFavorite')
+    const storedIsFavorite = localStorage.getItem(`isFavorite_${data.isbn13}`)
     if (storedIsFavorite) {
-      setIsFavorite(JSON.parse(storedIsFavorite))
+      setIsBookFavorite(JSON.parse(storedIsFavorite))
     }
   }, [])
-  if (!isFavorite) {
+
+  if (!isBookFavorite) {
     return <></>
   }
+
   return (
     <div className="favorite-book">
       <img src={data.image} alt="book" />
@@ -41,9 +44,11 @@ export function FavoriteBook({ data }: { data: BooksData }): JSX.Element {
         </div>
       </div>
       <div className="favorite-book__favorites">
-        <img src={favorites} alt="favorite"
-          className={`favorite-book__icon ${isFavorite ? 'active' : ''}`}
-          onClick={handleAddFavorite}
+        <img
+          src={favorites}
+          alt="favorite"
+          className={`favorite-book__icon ${isBookFavorite ? 'active' : ''}`}
+          onClick={handleToggleFavorite}
         />
       </div>
     </div>

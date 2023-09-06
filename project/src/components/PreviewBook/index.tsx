@@ -16,13 +16,13 @@ export function PreviewBook({ data }: { data: BooksData }): JSX.Element {
     return storedIsFavorite ? JSON.parse(storedIsFavorite) : false
   })
   const favoritesCount = useAppSelector(state => state.favorite.favoritesCount)
-  const cartItems = useAppSelector(state => state.cart.cartItems)
+  const cart = useAppSelector(state => state.cart.cart)
 
-  function handleAddToCartClick() {
-    handleAddToCart(data, cartItems, dispatch)
+  function handleClickAddToCart() {
+    handleAddToCart(data, cart, dispatch)
   }
 
-  function handleAddFavorite() {
+  function handleToggleFavorite() {
     const newIsFavorite = !isFavorite
     toggleFavorite(data, newIsFavorite, favoritesCount, dispatch)
     setIsFavorite(newIsFavorite)
@@ -32,6 +32,7 @@ export function PreviewBook({ data }: { data: BooksData }): JSX.Element {
   useEffect(() => {
     localStorage.setItem('isFavorite', JSON.stringify(isFavorite))
   }, [isFavorite])
+
 
   return (
     <div className="preview-book">
@@ -43,7 +44,7 @@ export function PreviewBook({ data }: { data: BooksData }): JSX.Element {
             <img className={`preview-book__favorites ${isFavorite ? 'active' : ''}`}
               src={favorites}
               alt="favorite"
-              onClick={handleAddFavorite} />
+              onClick={handleToggleFavorite} />
           </div>
         </div>
         <div className="preview-book__col preview-book__border">
@@ -67,7 +68,7 @@ export function PreviewBook({ data }: { data: BooksData }): JSX.Element {
             <span className="preview-book__format">Format</span>
             <span className='preview-book__link'>Paper book / ebook (PDF)</span>
           </div>
-          <Button type="button" onClick={handleAddToCartClick}>Add to cart</Button>
+          <Button type="button" onClick={handleClickAddToCart}>Add to cart</Button>
           <div className="preview-book__wrap">
             <NavLink className="preview-book__wrap_link" to="#">Preview book</NavLink>
           </div>
