@@ -2,26 +2,27 @@ import { useState } from 'react'
 import { BooksState } from '../../types/interface'
 
 export function Tabs({ data }: { data: BooksState }): JSX.Element {
-  const [selectBook, setSelectBook] = useState('description')
+  const [selectedTab, setSelectedTab] = useState('description')
 
-  let bookData = selectBook === 'description' ? data.desc :
-    selectBook === 'author' ? data.authors :
-      selectBook === 'reviews' ? 'Reviews' :
+  let tabContent = selectedTab === 'description' ? data.desc :
+    selectedTab === 'author' ? data.authors :
+      selectedTab === 'reviews' ? 'Reviews' :
         undefined
 
-  function handleClickSelect(value: string) {
-    setSelectBook(value)
+  function handleTabClick(value: string) {
+    setSelectedTab(value)
   }
+
   return (
-    <>
+    <div>
       <ul className="tabs">
-        <li className={selectBook === 'description' ? 'tabs__item active' : 'tabs__item'} onClick={() => handleClickSelect('description')}>Description</li>
-        <li className={selectBook === 'author' ? 'tabs__item active' : 'tabs__item'} onClick={() => handleClickSelect('author')}>Author</li>
-        <li className={selectBook === 'reviews' ? 'tabs__item active' : 'tabs__item'} onClick={() => handleClickSelect('reviews')}>Reviews</li>
+        <li className={selectedTab === 'description' ? 'tabs__item active' : 'tabs__item'} onClick={() => handleTabClick('description')}>Description</li>
+        <li className={selectedTab === 'author' ? 'tabs__item active' : 'tabs__item'} onClick={() => handleTabClick('author')}>Author</li>
+        <li className={selectedTab === 'reviews' ? 'tabs__item active' : 'tabs__item'} onClick={() => handleTabClick('reviews')}>Reviews</li>
       </ul>
       <div className="tabs__book">
-        {bookData}
+        {tabContent}
       </div>
-    </>
+    </div>
   )
 }

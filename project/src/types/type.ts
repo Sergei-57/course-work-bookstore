@@ -28,10 +28,6 @@ export type ButtonProps = {
   onClick?: () => void
 }
 
-export type ContainerProps = {
-  children: ReactNode
-}
-
 export type Book = {
   title: string
   subtitle: string
@@ -45,18 +41,6 @@ export type Books = {
   error: string
   total: string
   books: Book[]
-}
-
-export type TitleProps = {
-  children: ReactNode
-}
-
-export type PriceProps = {
-  price: string
-}
-
-export type MainProps = {
-  children: ReactNode
 }
 
 export type CounterProps = {

@@ -1,6 +1,4 @@
-import { PriceProps } from '../../types/type'
-
-export function Price({ price }: PriceProps): JSX.Element {
+export function Price({ price }: { price: string }): JSX.Element {
   return (
     <div className="price">{price}</div>
   )
