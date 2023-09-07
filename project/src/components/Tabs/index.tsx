@@ -4,7 +4,7 @@ import { BooksState } from '../../types/interface'
 export function Tabs({ data }: { data: BooksState }): JSX.Element {
   const [selectTabs, setSelectTabs] = useState('description')
 
-  let tabsContent = selectTabs === 'description' ? data.desc :
+  const tabsContent = selectTabs === 'description' ? data.desc :
     selectTabs === 'author' ? data.authors :
       selectTabs === 'reviews' ? 'Reviews' :
         undefined

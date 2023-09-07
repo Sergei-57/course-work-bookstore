@@ -11,7 +11,7 @@ export const requestNewBooks = async (searchQuery?: string): Promise<Books> => {
   return data as Books
 }
 
-export const requestBook = async (isbn13: string): Promise<BooksState> => {
-  const { data } = await client.get<BooksState>(`${bookEndPoint}/${isbn13}`)
+export const requestBook = async (id: string): Promise<BooksState> => {
+  const { data } = await client.get<BooksState>(`${bookEndPoint}/${id}`)
   return data as BooksState
 }

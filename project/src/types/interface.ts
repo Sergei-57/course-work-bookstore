@@ -62,7 +62,6 @@ export interface FavoriteState {
 
 export interface CartState {
   cart: BooksData[]
-  cartCount: number
 }
 
 export interface BookState {

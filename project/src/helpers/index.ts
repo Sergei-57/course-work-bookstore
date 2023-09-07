@@ -43,10 +43,9 @@ export function handleAddBasket(
   if (!isBookAlreadyAdded) {
     const updateCart = [...cart, data]
     localStorage.setItem('cart', JSON.stringify(updateCart))
-    localStorage.setItem('cartCount', String(updateCart.length))
     dispatch(setCart(updateCart))
   } else {
-    alert('Book already added to cart')
+    alert('Already in cart')
   }
 }
 
