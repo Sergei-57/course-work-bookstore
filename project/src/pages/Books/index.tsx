@@ -44,9 +44,6 @@ export function Books() {
       <Book key={book.isbn13} data={book} />
     ))
   }
-  // function renderBooks() {
-  //   return newBooks.map((book) => <Book key={book.isbn13} data={book} />)
-  // }
 
   return (
     <>

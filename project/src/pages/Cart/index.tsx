@@ -1,15 +1,15 @@
 import { useAppSelector } from '../../hook'
 import { Title } from '../../components/Title'
 import { BackHomeLink } from '../../components/BackHomeLink'
-import { CartBook } from '../../components/CartBook'
-import { BasketCheck } from '../../components/BasketCheck'
+import { BasketBook } from '../../components/BasketBook'
+import { BasketPrice } from '../../components/BasketPrice'
 
 export function Cart(): JSX.Element {
   const cart = useAppSelector(state => state.cart.cart)
 
   function renderBasketBooks() {
     if (cart.length > 0) {
-      return cart.map((book) => <CartBook key={book.isbn13} data={book} />)
+      return cart.map((book) => <BasketBook key={book.isbn13} data={book} />)
     } else {
       return <h2>Your basket is empty</h2>
     }
@@ -20,7 +20,7 @@ export function Cart(): JSX.Element {
       <BackHomeLink />
       <Title>Your cart</Title>
       {renderBasketBooks()}
-      <BasketCheck />
+      <BasketPrice />
     </div>
   )
 }

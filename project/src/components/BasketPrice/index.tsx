@@ -2,7 +2,7 @@ import { useAppSelector } from '../../hook'
 import { BooksData } from '../../types/interface'
 import { Button } from '../Button'
 
-export function BasketCheck(): JSX.Element {
+export function BasketPrice(): JSX.Element {
   const cart = useAppSelector(state => state.cart.cart)
   const vat: number = 12.50
   const totalCartPrice = calcTotalPrice(cart)
@@ -30,17 +30,19 @@ export function BasketCheck(): JSX.Element {
     alert(`Your total price is: ${calcFinalPrice()}`)
   }
   return (
-    <div className="cart-total">
-      <div className="cart-total__sum">
-        <span>Sum total</span><span>$ {totalCartPrice.toFixed(2)}</span>
+    <div className="basket-price">
+      <div className="basket-price__inner">
+        <div className="basket-price__sum">
+          <span>Sum total</span><span>$ {totalCartPrice.toFixed(2)}</span>
+        </div>
+        <div className="basket-price__vat">
+          <span>VAT</span><span>$ {vat}</span>
+        </div>
+        <div className="basket-price__total">
+          <span>total: </span><span>$ {calcFinalPrice()}</span>
+        </div>
       </div>
-      <div className="cart-total__vat">
-        <span>VAT</span><span>$ {vat}</span>
-      </div>
-      <div className="cart-total__total-price">
-        <span>total:</span><span>$ {calcFinalPrice()}</span>
-      </div>
-      <div className="cart-total__btn"><Button type="submit" onClick={handleCheckoutClick}>Check out</Button></div>
+      <div className="basket-price__button"><Button type="submit" onClick={handleCheckoutClick}>Check out</Button></div>
     </div>
   )
 }

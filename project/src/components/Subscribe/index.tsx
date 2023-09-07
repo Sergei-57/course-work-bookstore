@@ -10,6 +10,9 @@ export function Subscribe(): JSX.Element {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault()
+
+    console.log(`email: ${email}`)
+
     setEmail('')
   }
 

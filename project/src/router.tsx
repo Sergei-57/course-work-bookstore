@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
         element: <MyFavorites />
       },
       {
-        path: '/cart',
+        path: '/basket',
         element: <Cart />
       },
     ],

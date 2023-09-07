@@ -16,7 +16,7 @@ export function Header() {
         <div className="header__links">
           <NavLink className="header__link" to="./my-favorites"><img className="header__icon" src={favorite} alt="favorite" />
           </NavLink>
-          <NavLink className="header__link" to="./cart"><img className="header__icon" src={basket} alt="bascet" />
+          <NavLink className="header__link" to="./basket"><img className="header__icon" src={basket} alt="bascet" />
           </NavLink>
           <NavLink className="header__link" to="./user"><img className="header__icon" src={user} alt="user" /></NavLink>
         </div>
