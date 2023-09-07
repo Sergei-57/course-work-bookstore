@@ -9,7 +9,7 @@ import { Subscribe } from '../../components/Subscribe'
 import { Pagination } from '../../components/Pagination'
 import { togglePage } from '../../helpers'
 
-export function Books() {
+export function Books(): JSX.Element {
   const dispatch = useAppDispatch()
   const { newBooks, loading, error, currentPage, limit } = useAppSelector(state => state.newBooks)
   const { pageNumber } = useParams()
@@ -36,7 +36,7 @@ export function Books() {
     togglePage(event, dispatch, newBooks, currentPage, limit, navigate)
   }
 
-  function renderBooks(): JSX.Element[] {
+  function renderBooks() {
     const startIndex = (currentPage - 1) * limit
     const endIndex = startIndex + limit
 
@@ -46,7 +46,7 @@ export function Books() {
   }
 
   return (
-    <>
+    <div>
       <Title>New Releases Books</Title>
       <div className="books">
         {newBooks.length && renderBooks()}
@@ -55,6 +55,6 @@ export function Books() {
         <Pagination books={newBooks} limit={limit} pageNumber={pageNumberCount} />
       </div>
       <Subscribe />
-    </>
+    </div>
   )
 }

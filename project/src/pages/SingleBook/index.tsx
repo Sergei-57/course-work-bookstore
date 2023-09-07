@@ -30,11 +30,12 @@ export function SingleBook(): JSX.Element {
     return <div>Error</div>
   }
 
-  function renderSimilartedBooks() {
-    const thresHoldRating: string = '4'
-    const recommendedBooks = newBooks.filter((book) => book.rating > thresHoldRating)
-    if (recommendedBooks.length === 3) {
-      return recommendedBooks.map((book) => <Book key={book.isbn13} data={book} />)
+  // Функция для отоброжения списка рекомендуемых книг
+  function renderSimilarBooks() {
+    const ratingBooks: string = '4'
+    const recommendBooks = newBooks.filter((book) => book.rating > ratingBooks)
+    if (recommendBooks.length === 3) {
+      return recommendBooks.map((book) => <Book key={book.isbn13} data={book} />)
     }
   }
 
@@ -45,7 +46,7 @@ export function SingleBook(): JSX.Element {
       <Subscribe />
       <Title>Similar Books</Title>
       <div className="book__similar">
-        {renderSimilartedBooks()}
+        {renderSimilarBooks()}
       </div>
     </div>
   )

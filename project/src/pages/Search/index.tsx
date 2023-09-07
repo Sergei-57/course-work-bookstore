@@ -27,12 +27,18 @@ export function Search(): JSX.Element {
     return <p className='error'>{error}</p>
   }
 
+  function renderFilteredBooks() {
+    return filteredBooks.map((book) => (
+      <Book key={book.isbn13} data={book} />
+    ))
+  }
+
   return (
     <div>
       <Title>‘{searchQuery}’ SEARCH RESULTS</Title>
       <p>Found {filteredBooks.length} books</p>
       <div className="search-result">
-        {filteredBooks.map((book) => <Book key={book.isbn13} data={book} />)}
+        {renderFilteredBooks()}
       </div>
     </div>
   )

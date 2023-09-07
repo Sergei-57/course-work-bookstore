@@ -1,9 +1,10 @@
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { Button } from '../../components/Button'
 
-export function ResetPassword() {
+export function ResetPassword(): JSX.Element {
   const [email, setEmail] = useState('')
 
+  // Функция для отправки формы
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault()
 
@@ -12,6 +13,7 @@ export function ResetPassword() {
     setEmail('')
   }
 
+  // Функция для обновления состояния
   function handleEmailChange(event: ChangeEvent<HTMLInputElement>): void {
     setEmail(event.target.value)
   }
@@ -21,7 +23,7 @@ export function ResetPassword() {
       <div className="reset-password__inner">
         <h2 className="reset-password__title">Reset password</h2>
         <form className="reset-password__form" onSubmit={handleSubmit}>
-          <label htmlFor="email" className="reset-password__form-label">Email</label>
+          <label htmlFor="email" className="reset-password__label">Email</label>
           <input
             type="email"
             className="form-control"

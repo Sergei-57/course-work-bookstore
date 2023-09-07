@@ -6,6 +6,7 @@ export function SignIn(): JSX.Element {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
+  // Функция для отправки формы
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault()
 
@@ -15,6 +16,7 @@ export function SignIn(): JSX.Element {
     setPassword('')
   }
 
+  // Функции для обновления состояния
   function handleEmailChange(event: ChangeEvent<HTMLInputElement>): void {
     setEmail(event.target.value)
   }

@@ -18,22 +18,24 @@ export function MyFavorites(): JSX.Element {
     dispatch(setFavorites(favoritesBooks))
   }, [])
 
+  // Функция для отображения списка избранных книг
   function renderFavorites() {
     return favoritesBooks.map((book) => (
       <FavoriteBook key={book.isbn13} data={book} />
     ))
   }
 
+  // Функция для отоброжения списка популярных книг
   function renderPopularBooks() {
-    const thresHoldRating: string = '4'
-    const recommendedBooks = newBooks.filter((book) => book.rating > thresHoldRating)
-    if (recommendedBooks.length === 3) {
-      return recommendedBooks.map((book) => <Book key={book.isbn13} data={book} />)
+    const ratingBooks: string = '4'
+    const recommendBooks = newBooks.filter((book) => book.rating > ratingBooks)
+    if (recommendBooks.length === 3) {
+      return recommendBooks.map((book) => <Book key={book.isbn13} data={book} />)
     }
   }
 
   return (
-    <>
+    <div>
       <BackHomeLink />
       <Title>Favorites</Title>
       <div className="favorites">
@@ -43,6 +45,6 @@ export function MyFavorites(): JSX.Element {
       <div className="favorites__popular">
         {renderPopularBooks()}
       </div>
-    </>
+    </div>
   )
 }

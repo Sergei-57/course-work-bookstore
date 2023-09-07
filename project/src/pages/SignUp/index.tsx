@@ -7,10 +7,11 @@ export function SignUp(): JSX.Element {
   const [password, setPassword] = useState<string>('')
   const [confirmPassword, setConfirmPassword] = useState<string>('')
 
+  // Функция для отправки формы
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault()
 
-    console.log(`name: ${name}, email: ${email}, password: ${password}, confirmPassword: ${confirmPassword}`)
+    console.log(`name: ${userName}, email: ${email}, password: ${password}, confirmPassword: ${confirmPassword}`)
 
     setUserName('')
     setEmail('')
@@ -18,6 +19,7 @@ export function SignUp(): JSX.Element {
     setConfirmPassword('')
   }
 
+  // Функции для обновления состояния
   function handleUserNameChange(event: ChangeEvent<HTMLInputElement>): void {
     setUserName(event.target.value)
   }
