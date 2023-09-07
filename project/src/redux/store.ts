@@ -3,6 +3,7 @@ import { newBooksReducer } from './newBooksSlice'
 import { bookReducer } from './bookSlice'
 import { favoriteReducer } from './favoriteSlice'
 import { cartReducer } from './cartSlice'
+
 export const store = configureStore({
   reducer: {
     newBooks: newBooksReducer,
