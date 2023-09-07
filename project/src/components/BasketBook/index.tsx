@@ -8,6 +8,7 @@ export function BasketBook({ data }: { data: BooksData }): JSX.Element {
   const dispatch = useAppDispatch()
   const cart = useAppSelector(state => state.cart.cart)
 
+  // Функция для удаления книги из корзины
   function handleRemoveCart(item: BooksData) {
     dispatch(removeFromCart(item))
     const updateCart = cart.filter(cartItem => cartItem.isbn13 !== item.isbn13)
@@ -16,6 +17,7 @@ export function BasketBook({ data }: { data: BooksData }): JSX.Element {
     dispatch(setCart(updateCart))
   }
 
+  // Функция для изменения количества книг в корзине
   const handleCounterChange = (value: number) => {
     const updateCart = cart.map(cartItem => {
       if (cartItem.isbn13 === data.isbn13) {

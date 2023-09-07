@@ -6,9 +6,9 @@ export function Rating({ rating }: { rating: string }): JSX.Element {
     const stars = []
 
     for (let i: number = 1; i <= 5; i++) {
-      stars.push(
-        <img key={i} src={i <= Number(rating) ? activeStar : star} />
-      )
+      const starImage = i <= Number(rating) ? activeStar : star
+      const starElement = <img key={i} src={starImage} />
+      stars.push(starElement)
     }
     return stars
   }

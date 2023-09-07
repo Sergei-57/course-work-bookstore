@@ -1,9 +1,5 @@
 import { useState } from 'react'
-
-type CounterProps = {
-  initialValue: number
-  onChange: (count: number) => void
-}
+import { CounterProps } from '../../types/interface'
 
 export function Counter({ initialValue = 1, onChange }: CounterProps): JSX.Element {
   const [count, setCount] = useState(() => {

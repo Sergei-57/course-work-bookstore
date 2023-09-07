@@ -111,3 +111,8 @@ export interface PaginationProps {
   limit: number
   pageNumber: number
 }
+
+export interface CounterProps {
+  initialValue: number
+  onChange: (count: number) => void
+}

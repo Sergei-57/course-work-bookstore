@@ -44,7 +44,7 @@ export function SingleBook(): JSX.Element {
       <PreviewBook data={book} />
       <Subscribe />
       <Title>Similar Books</Title>
-      <div className="book__similated">
+      <div className="book__similar">
         {renderSimilartedBooks()}
       </div>
     </div>

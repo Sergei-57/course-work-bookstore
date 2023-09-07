@@ -12,8 +12,8 @@ import favorites from '../../images/favorites.svg'
 export function PreviewBook({ data }: { data: BooksData }): JSX.Element {
   const dispatch = useAppDispatch()
   const [isFavorite, setIsFavorite] = useState(() => {
-    const storedIsFavorite = localStorage.getItem(`isFavorite ${data.isbn13}`)
-    return storedIsFavorite ? JSON.parse(storedIsFavorite) : false
+    const saveIsFavorite = localStorage.getItem(`isFavorite_${data.isbn13}`)
+    return saveIsFavorite ? JSON.parse(saveIsFavorite) : false
   })
   const favoritesCount = useAppSelector(state => state.favorite.favoritesCount)
   const cart = useAppSelector(state => state.cart.cart)
@@ -22,11 +22,12 @@ export function PreviewBook({ data }: { data: BooksData }): JSX.Element {
     handleAddToCart(data, cart, dispatch)
   }
 
+  // Функция для переключения состояния избранного, обновляет состояние
   function handleToggleFavorite() {
     const newIsFavorite = !isFavorite
     toggleFavorite(data, newIsFavorite, favoritesCount, dispatch)
     setIsFavorite(newIsFavorite)
-    localStorage.setItem(`isFavorite ${data.isbn13}`, JSON.stringify(newIsFavorite))
+    localStorage.setItem(`isFavorite_${data.isbn13}`, JSON.stringify(newIsFavorite))
   }
 
   useEffect(() => {

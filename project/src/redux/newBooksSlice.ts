@@ -18,7 +18,7 @@ const newBooksSlice = createSlice({
     error: false,
     searchQuery: '',
     currentPage: 1,
-    limit: 12,
+    limit: 9,
   } as NewBooksState,
 
   reducers: {

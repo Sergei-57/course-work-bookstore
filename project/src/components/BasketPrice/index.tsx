@@ -7,6 +7,7 @@ export function BasketPrice(): JSX.Element {
   const vat: number = 12.50
   const totalCartPrice = calcTotalPrice(cart)
 
+  // Функция для расчета общей стоимости заказа
   function calcTotalPrice(dataCart: BooksData[] | undefined): number {
     if (dataCart) {
       const sum: number = dataCart.reduce((acc: number, book: BooksData) => {
@@ -20,6 +21,7 @@ export function BasketPrice(): JSX.Element {
     return 0
   }
 
+  // Функция для расчета итоговой стоимости заказа
   function calcFinalPrice(): number {
     const booksSum = calcTotalPrice(cart)
     const sumTotal = booksSum + vat
@@ -29,6 +31,7 @@ export function BasketPrice(): JSX.Element {
   function handleCheckoutClick() {
     alert(`Your total price is: ${calcFinalPrice()}`)
   }
+
   return (
     <div className="basket-price">
       <div className="basket-price__inner">

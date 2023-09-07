@@ -13,21 +13,21 @@ export function toggleFavorite(
   favoritesCount: number,
   dispatch: ThunkDispatch<RootState, undefined, AnyAction>,
 ) {
-  let updatedFavorites: BooksData[] = [...JSON.parse(localStorage.getItem('favoritesBooks') || '[]')]
+  let updatFavorites: BooksData[] = [...JSON.parse(localStorage.getItem('favoritesBooks') || '[]')]
   let newFavoritesCount = favoritesCount
 
   if (!isFavorite) {
-    updatedFavorites = updatedFavorites.filter(book => book.isbn13 !== data.isbn13)
+    updatFavorites = updatFavorites.filter(book => book.isbn13 !== data.isbn13)
     newFavoritesCount -= 1
 
   } else {
-    updatedFavorites = [...updatedFavorites, data]
+    updatFavorites = [...updatFavorites, data]
     newFavoritesCount += 1
 
   }
 
-  dispatch(setFavorites(updatedFavorites))
-  localStorage.setItem('favoritesBooks', JSON.stringify(updatedFavorites))
+  dispatch(setFavorites(updatFavorites))
+  localStorage.setItem('favoritesBooks', JSON.stringify(updatFavorites))
 
   dispatch(setFavoritesCount(newFavoritesCount))
   localStorage.setItem('favoritesCount', String(newFavoritesCount))

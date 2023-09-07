@@ -4,10 +4,12 @@ import { Title } from '../Title'
 export function Subscribe(): JSX.Element {
   const [email, setEmail] = useState<string>('')
 
+  // Функция для обновления состояния
   function handleEmailChange(event: ChangeEvent<HTMLInputElement>): void {
     setEmail(event.target.value)
   }
 
+  // Функция для отправки формы
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault()
 
