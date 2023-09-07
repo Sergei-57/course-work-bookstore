@@ -40,7 +40,7 @@ export function SignUp(): JSX.Element {
     <div className="form-auth">
       <form className="form" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="username" className="form-label">Username</label>
+          <label htmlFor="username" className="form-label">Name</label>
           <input
             type="text"
             className="form-control"
@@ -50,7 +50,7 @@ export function SignUp(): JSX.Element {
             value={userName} />
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
+          <label htmlFor="email" className="form-label">Email</label>
           <input
             type="email"
             className="form-control"

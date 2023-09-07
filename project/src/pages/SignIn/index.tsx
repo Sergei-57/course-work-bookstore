@@ -29,7 +29,7 @@ export function SignIn(): JSX.Element {
     <div className="form-auth">
       <form className="form" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
+          <label htmlFor="email" className="form-label">Email</label>
           <input
             type="email"
             className="form-control"
