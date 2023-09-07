@@ -5,8 +5,8 @@ import { BooksData, NewBooksState } from '../types/interface'
 export const fetchNewBooks = createAsyncThunk('newBooks/fetchNewBooks', async (searchQuery?: string) => {
   const { books } = await requestNewBooks(searchQuery)
   const listByIsbn13 = books.map((book) => book.isbn13)
-  const bookDetailsPromises = listByIsbn13.map((isbn13: string) => requestBook(isbn13))
-  const newBooks = await Promise.all(bookDetailsPromises)
+  const bookPromises = listByIsbn13.map((isbn13: string) => requestBook(isbn13))
+  const newBooks = await Promise.all(bookPromises)
   return newBooks
 })
 

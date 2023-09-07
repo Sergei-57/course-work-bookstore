@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hook'
 import { BooksData } from '../../types/interface'
-import { toggleFavorite, handleAddToCart } from '../../helpers'
+import { toggleFavorite, handleAddBasket } from '../../helpers'
 import { Title } from '../Title'
 import { Rating } from '../Rating'
 import { Button } from '../Button'
@@ -19,7 +19,7 @@ export function PreviewBook({ data }: { data: BooksData }): JSX.Element {
   const cart = useAppSelector(state => state.cart.cart)
 
   function handleClickAddToCart() {
-    handleAddToCart(data, cart, dispatch)
+    handleAddBasket(data, cart, dispatch)
   }
 
   // Функция для переключения состояния избранного, обновляет состояние

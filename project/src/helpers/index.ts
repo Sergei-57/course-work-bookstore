@@ -7,35 +7,33 @@ import { setFavorites, setFavoritesCount } from '../redux/favoriteSlice'
 import { setCart } from '../redux/cartSlice'
 import { setPage } from '../redux/newBooksSlice'
 
+// Функция для переключения состояния избранных книг
 export function toggleFavorite(
   data: BooksData,
   isFavorite: boolean,
   favoritesCount: number,
   dispatch: ThunkDispatch<RootState, undefined, AnyAction>,
 ) {
-  let updatFavorites: BooksData[] = [...JSON.parse(localStorage.getItem('favoritesBooks') || '[]')]
+  let updateFavorites: BooksData[] = [...JSON.parse(localStorage.getItem('favoritesBooks') || '[]')]
   let newFavoritesCount = favoritesCount
 
   if (!isFavorite) {
-    updatFavorites = updatFavorites.filter(book => book.isbn13 !== data.isbn13)
+    updateFavorites = updateFavorites.filter(book => book.isbn13 !== data.isbn13)
     newFavoritesCount -= 1
-
   } else {
-    updatFavorites = [...updatFavorites, data]
+    updateFavorites = [...updateFavorites, data]
     newFavoritesCount += 1
-
   }
 
-  dispatch(setFavorites(updatFavorites))
-  localStorage.setItem('favoritesBooks', JSON.stringify(updatFavorites))
+  dispatch(setFavorites(updateFavorites))
+  localStorage.setItem('favoritesBooks', JSON.stringify(updateFavorites))
 
   dispatch(setFavoritesCount(newFavoritesCount))
   localStorage.setItem('favoritesCount', String(newFavoritesCount))
 }
 
-// =============================================================================================
-
-export function handleAddToCart(
+// Функция для добавления книги в корзину
+export function handleAddBasket(
   data: BooksData,
   cart: BooksData[],
   dispatch: ThunkDispatch<RootState, undefined, AnyAction>
@@ -43,18 +41,24 @@ export function handleAddToCart(
   const isBookAlreadyAdded = cart.some(item => item.isbn13 === data.isbn13)
 
   if (!isBookAlreadyAdded) {
-    const updatedCart = [...cart, data]
-    localStorage.setItem('cart', JSON.stringify(updatedCart))
-    localStorage.setItem('cartCount', String(updatedCart.length))
-    dispatch(setCart(updatedCart))
+    const updateCart = [...cart, data]
+    localStorage.setItem('cart', JSON.stringify(updateCart))
+    localStorage.setItem('cartCount', String(updateCart.length))
+    dispatch(setCart(updateCart))
   } else {
     alert('Book already added to cart')
   }
 }
 
-// =============================================================================================
-
-export function togglePage(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, newBooks: Book[], currentPage: number, limit: number, navigate: (url: string) => void): void {
+// Функция для обработки событий клика на элементах страницы
+export function togglePage(
+  event: React.MouseEvent<HTMLDivElement>,
+  dispatch: Dispatch,
+  newBooks: Book[],
+  currentPage: number,
+  limit: number,
+  navigate: (url: string) => void):
+  void {
   const target = event.target as HTMLElement
   const { page, role } = target.dataset as { page: string, role: string }
 

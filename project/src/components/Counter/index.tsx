@@ -1,11 +1,15 @@
 import { useState } from 'react'
-import { CounterProps } from '../../types/interface'
+
+type CounterProps = {
+  initialValue: number
+  onChange: (count: number) => void
+}
 
 export function Counter({ initialValue = 1, onChange }: CounterProps): JSX.Element {
   const [count, setCount] = useState(() => {
-    const countFromLocalStorage = localStorage.getItem('count')
-    if (countFromLocalStorage) {
-      return Number(countFromLocalStorage)
+    const countLocalStorage = localStorage.getItem('count')
+    if (countLocalStorage) {
+      return Number(countLocalStorage)
     }
     return initialValue
   })

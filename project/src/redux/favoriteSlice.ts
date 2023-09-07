@@ -10,8 +10,8 @@ const favoriteSlice = createSlice({
 
   reducers: {
     setFavorites: (state, action: PayloadAction<BooksData[]>) => {
-      const updatBooks = Array.from(action.payload)
-      updatBooks.forEach((book) => {
+      const updateBooks = Array.from(action.payload)
+      updateBooks.forEach((book) => {
         const index = state.favoritesBooks.findIndex((favBook) => favBook.isbn13 === book.isbn13)
 
         if (index !== -1) {
