@@ -45,7 +45,7 @@ export function SignUp(): JSX.Element {
             type="text"
             className="form-control"
             id="username"
-            placeholder="Username"
+            placeholder="Name"
             onChange={handleUserNameChange}
             value={userName} />
         </div>
