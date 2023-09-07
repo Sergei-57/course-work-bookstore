@@ -36,7 +36,7 @@ export function Search(): JSX.Element {
   return (
     <div>
       <Title>‘{searchQuery}’ SEARCH RESULTS</Title>
-      <p>Found {filteredBooks.length} books</p>
+      <p className='search-result__text'>Found {filteredBooks.length} books</p>
       <div className="search-result">
         {renderFilteredBooks()}
       </div>
